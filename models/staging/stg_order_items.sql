@@ -1,0 +1,13 @@
+SELECT
+    ID AS ORDER_ITEM_ID,
+    ORDER_ID,
+    USER_ID,
+    PRODUCT_ID,
+    INVENTORY_ITEM_ID,
+    STATUS,
+    SALE_PRICE,
+    CREATED_AT,
+    RETURNED_AT,
+    SHIPPED_AT,
+    DELIVERED_AT
+FROM {{ source('ecommerce_looker', 'ORDER_ITEMS') }}

@@ -1,0 +1,50 @@
+version: 2
+
+models:
+  - name: stg_users
+    columns:
+      - name: USER_ID
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_orders
+    columns:
+      - name: ORDER_ID
+        tests:
+          - unique
+          - not_null
+      - name: USER_ID
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_users')
+                field: USER_ID
+
+  - name: stg_order_items
+    columns:
+      - name: ORDER_ITEM_ID
+        tests:
+          - unique
+          - not_null
+      - name: ORDER_ID
+        tests:
+          - not_null
+      - name: PRODUCT_ID
+        tests:
+          - not_null
+
+  - name: stg_products
+    columns:
+      - name: PRODUCT_ID
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_inventory_items
+    columns:
+      - name: INVENTORY_ITEM_ID
+        tests:
+          - unique
+          - not_null

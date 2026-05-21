@@ -1,0 +1,16 @@
+SELECT
+    o.ORDER_ID,
+    o.USER_ID,
+    o.STATUS,
+    o.CREATED_AT,
+    o.RETURNED_AT,
+    o.SHIPPED_AT,
+    o.DELIVERED_AT,
+    o.NUM_OF_ITEM,
+    COUNT(oi.ORDER_ITEM_ID) AS ITEM_COUNT,
+    SUM(oi.SALE_PRICE) AS ORDER_REVENUE,
+    DATEDIFF('day', o.CREATED_AT, o.SHIPPED_AT) AS DAYS_TO_SHIP,
+    DATEDIFF('day', o.SHIPPED_AT, o.DELIVERED_AT) AS DAYS_TO_DELIVER
+FROM {{ ref('stg_orders') }} o
+LEFT JOIN {{ ref('stg_order_items') }} oi ON o.ORDER_ID = oi.ORDER_ID
+GROUP BY 1, 2, 3, 4, 5, 6, 7, 8

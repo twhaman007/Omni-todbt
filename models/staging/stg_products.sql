@@ -1,0 +1,11 @@
+SELECT
+    ID AS PRODUCT_ID,
+    NAME AS PRODUCT_NAME,
+    BRAND,
+    CATEGORY,
+    DEPARTMENT,
+    SKU,
+    RETAIL_PRICE,
+    COST,
+    DISTRIBUTION_CENTER_ID
+FROM {{ source('ecommerce_looker', 'PRODUCTS') }}
