@@ -1,0 +1,24 @@
+version: 2
+
+sources:
+  - name: ecommerce_looker
+    database: ECOMMERCE_LOOKER
+    schema: PUBLIC
+    description: "Main ecommerce source database with all raw tables"
+    tables:
+      - name: AD_EVENTS
+      - name: ATTRIBUTION_TOUCHPOINTS
+      - name: CAMPAIGNS
+      - name: CHANNELS
+      - name: CONVERSIONS
+      - name: DISTRIBUTION_CENTERS
+      - name: EVENTS
+      - name: INVENTORY_ITEMS
+      - name: ORDERS
+      - name: ORDER_ITEMS
+      - name: PRODUCTS
+      - name: RI_CSP
+      - name: RSU_USERS
+      - name: SESSIONS
+      - name: TARGETBUSMAPPING
+      - name: USERS
