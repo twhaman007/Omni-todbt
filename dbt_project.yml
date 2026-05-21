@@ -1,0 +1,25 @@
+name: 'dbt_snowflake_project'
+version: '1.0.0'
+
+# Profile name from profiles.yml
+profile: 'dbt_snowflake_project'
+
+# Paths
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# Model configurations
+models:
+  dbt_snowflake_project:
+
+    # Example folder configuration
+    example:
+      +materialized: view
