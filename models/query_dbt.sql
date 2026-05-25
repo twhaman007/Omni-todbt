@@ -1,4 +1,5 @@
-SELECT "CAMPAIGN_ID",
-    "CAMPAIGN_NAME"
-FROM {{source('ecommerce_looker', 'CAMPAIGNS')}} AS "campaigns"
+SELECT "PRODUCT_BRAND",
+    "PRODUCT_CATEGORY",
+    AVG(("PRODUCT_RETAIL_PRICE" - "COST") / NULLIF("PRODUCT_RETAIL_PRICE", 0)) AS "AVG_MARGIN_PERCENT"
+FROM {{source('ecommerce_looker', 'INVENTORY_ITEMS')}} AS "inventory_items"
 GROUP BY 1, 2
